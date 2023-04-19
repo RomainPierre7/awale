@@ -91,6 +91,10 @@ def harvest(player, last_index):
 
 def game_over(player):
         if sum(board[0]) == 0 or sum(board[1]) == 0:
+            if attic[0] > attic[1]:
+                player = 0
+            elif attic[0] < attic[1]:   
+                player = 1
             screen.fill((150, 70, 30))
             font = pygame.font.SysFont(font_sys, 200)
             text = font.render(f"Player n°{player} won !", True, (255, 255, 255))
