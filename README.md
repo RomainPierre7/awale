@@ -1,17 +1,16 @@
-# Awale Game Rules
+# Awale
 
-## Objective
+Awale, also known as Awélé, Wari or Awele, is one of the oldest strategy games, similar to Mancala. Its origin is believed to be from ancient Egypt. These games are very popular in Africa today and symbolize the importance of agriculture.
 
-The objective of the game is to collect as many seeds as possible from the board by moving them strategically.
+### Game Rules
 
-## Game Set Up
-
-The game is played on a board with 12 holes on each side and 48 seeds. Each player controls the 6 holes on their side of the board and their goal hole. The seeds are evenly distributed among the holes, with 4 seeds per hole.
-
-## Game Play
-
-On each turn, a player chooses one of their holes and collects all the seeds in that hole. The player then distributes the seeds, dropping one in each consecutive hole in a counter-clockwise direction. The player's goal hole is skipped during this process. If the last seed falls into the player's goal hole, they get another turn. If the last seed falls into an empty hole on the player's side, and the opposite hole contains seeds, the player captures both their last seed and the seeds in the opposite hole. Captured seeds are placed in the player's goal hole. 
-
-## End of Game
-
-The game ends when one player has no seeds in their holes. The player with the most seeds in their goal hole is the winner.
+- Goal: Capture as many seeds as possible. The player with the most seeds at the end of the game wins.
+- Players: 2
+- Board: The game is played on a board with 2x6 holes.
+- Preparation: Each player places 4 seeds in each of the 6 holes in front of them.
+- Storage Holes: Each player has a storage hole on their right-hand side, which does not count as a playing hole.
+- Play: The first player takes all the seeds from one of their holes and drops one in each subsequent hole in an anti-clockwise direction.
+- Capture: If the last seed is dropped in a hole on the opponent's side that already has 1 or 2 seeds, the player captures the resulting 2 or 3 seeds. This process can continue, called a "sweep", if the previous hole also has 2 or 3 seeds.
+- Loop: If a player captures more than 11 seeds, it creates a loop in the game where the starting hole is skipped, and the player continues in a similar way.
+- Forbidden Move: A player cannot make a move that captures all the seeds from the opponent's side.
+- End of Game: The game ends when one player has no seeds left in their camp, and the other player captures the remaining seeds.

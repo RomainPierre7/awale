@@ -1,5 +1,7 @@
 import pygame
 import math
+import time
+import random
 
 # Pygame Initialization
 font_sys = "impact"
@@ -18,12 +20,18 @@ board_loc = [[(width // 2 + (j - 2.5) * radius * 2.5, height // 2 + (i - 0.5) * 
 rotation = [[0, 5], [0, 4], [0, 3], [0, 2], [0, 1], [0, 0], [1, 0], [1, 1], [1, 2], [1, 3], [1, 4], [1, 5]]
 
 # Functions
-def update_screen(turn):
+def update_screen(player, turn):
     screen.fill((150, 70, 30))
     font = pygame.font.SysFont(font_sys, 100)
     text = font.render(f"Turn n°{turn}", True, (255, 255, 255))
     len = text.get_width()
     screen.blit(text, (width // 2 - len // 2, 10))
+    text = font.render(f"Player n°{player}'s turn", True, (255, 255, 255))
+    len = text.get_width()
+    if player == 0:
+        screen.blit(text, (width // 2 - len // 2, board_loc[0][0][1] - radius - 100))
+    elif player == 1:
+        screen.blit(text, (width // 2 - len // 2, board_loc[1][0][1] + radius + 100))
     for i in range(2):
         for j in range(6):
             center_x, center_y = board_loc[i][j]
@@ -63,7 +71,7 @@ def sow(player):
                         elif player == 1:
                             start_idx = player * 6 + j
                         next_index = start_idx
-                        for i in range(nb_sows):
+                        for _ in range(nb_sows):
                             if player == 0:
                                 next_index = (next_index + 1) % 12
                                 if next_index == start_idx:
@@ -74,10 +82,13 @@ def sow(player):
                                 if next_index == start_idx:
                                     next_index = (next_index + 1) % 12
                                 board[rotation[next_index][0]][rotation[next_index][1]] += 1
+                            update_screen(player, turn)
+                            time.sleep(0.2)
                         sowing = False
-                        if next_index >= (player + 1 % 2) * 6 and next_index < (player + 1 % 12) * 6 + 6:
+                        if (player == 0 and next_index % 12 > 5) or (player == 1 and next_index % 12 < 6):
                             if board[rotation[next_index][0]][rotation[next_index][1]] == 2 or board[rotation[next_index][0]][rotation[next_index][1]] == 3:
                                 harvest = True
+                                print("harvest")
                                 break
     return harvest, next_index
 
@@ -87,6 +98,8 @@ def harvest(player, last_index):
         count += board[rotation[last_index][0]][rotation[last_index][1]]
         board[rotation[last_index][0]][rotation[last_index][1]] = 0
         last_index = (last_index - 1) % 12
+        update_screen(player, turn)
+        time.sleep(0.2)
     attic[player] += count
 
 def game_over(player):
@@ -120,7 +133,7 @@ def game_over(player):
                         return True
 
 # Game initialization
-player = 0
+player = random.randint(0, 1)
 turn = 0
 
 # Game Loop
@@ -129,7 +142,7 @@ while True:
         if event.type == pygame.QUIT:
             pygame.quit()
             exit()
-    update_screen(turn)
+    update_screen(player, turn)
     harvest_possible, last_index = sow(player)
     if harvest_possible:
         harvest(player, last_index)
